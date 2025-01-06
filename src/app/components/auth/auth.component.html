@@ -1,0 +1,57 @@
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="row shadow-lg" style="width: 70%; max-width: 900px; border-radius: 10px; overflow: hidden;">
+      <!-- Bagian kiri dengan gambar -->
+      <div class="col-md-6 p-0">
+        <img src="https://png.pngtree.com/background/20230519/original/pngtree-playstation-4-gamepad-on-a-black-screen-picture-image_2669579.jpg" 
+             alt="Login Image" 
+             style="width: 100%; height: 100%; object-fit: cover;" />
+      </div>
+      <!-- Bagian kanan dengan form login -->
+      <div class="col-md-6 bg-white p-5 d-flex flex-column justify-content-center">
+        <h4 class="text-center mb-4 fw-bold">Login</h4>
+        <form [formGroup]="authForm" (ngSubmit)="onAuth()">
+          <!-- Input untuk noTelp -->
+          <div class="mb-3">
+            <label for="noTelp" class="form-label">Nomor Telepon</label>
+            <input
+              id="noTelp"
+              type="text"
+              class="form-control"
+              formControlName="noTelp"
+              placeholder="Masukkan Nomor Telepon"
+            />
+            <div *ngIf="authForm.controls['noTelp'].invalid && authForm.controls['noTelp'].touched" class="text-danger">
+              Nomor Telepon wajib diisi dengan format yang benar.
+            </div>
+          </div>
+  
+          <!-- Input untuk Password -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              id="password"
+              type="password"
+              class="form-control"
+              formControlName="password"
+              placeholder="Masukkan Password"
+            />
+            <div *ngIf="authForm.controls['password'].invalid && authForm.controls['password'].touched" class="text-danger">
+              Password wajib diisi dan minimal 6 karakter.
+            </div>
+          </div>
+  
+          <!-- Tombol Login -->
+          <button type="submit" class="btn btn-primary w-100 mb-3" [disabled]="isSubmitting">
+            {{ isSubmitting ? "Login..." : "Sign In" }}
+          </button>
+  
+          <!-- Link ke Register -->
+          <div class="text-center">
+            <span class="text-muted">Belum punya akun? </span>
+            <a href="/register" class="text-decoration-none fw-bold">Register</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

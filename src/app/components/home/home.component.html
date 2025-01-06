@@ -1,0 +1,215 @@
+<section class="hero text-light" 
+    style="
+        background: url('https://i.imgur.com/69hklZe.jpeg') no-repeat center center; 
+        background-size: cover; 
+        height: 400px;
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        text-align: center;">
+    <div style="background-color: rgba(0, 0, 0, 0.6); padding: 20px; border-radius: 8px;">
+        <h1 class="display-4 fw-bold">Selamat Datang di Pixels Game</h1>
+        <p class="lead">
+        Rental PlayStation & Nitendo terbaik di Palembang! Kami menyediakan berbagai jenis PS & Nitendo untuk disewakan dengan harga terjangkau.
+        </p>
+    </div>
+</section>
+
+
+<section class="container my-5">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="text-danger">Kenapa Memilih Kami?</h2>
+        <p>
+          Kami menawarkan pengalaman bermain yang luar biasa dengan berbagai pilihan konsol PlayStation serta Nitendo terbaru dan game populer. 
+          Pixels Game menyediakan koleksi game yang beragam dan menarik, mulai dari genre aksi, petualangan, olahraga, hingga RPG, sesuai dengan platform pilihan Anda. 
+          Nikmati pengalaman bermain konsol terbaik di ruangan VVIP, VIP, atau Regular yang dirancang untuk kenyamanan Anda.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <div 
+          id="gameGallery" 
+          class="d-flex gap-3" 
+          style="display: flex; overflow-x: auto; overflow-y: hidden; padding-bottom: 10px; scroll-behavior: smooth;"
+        >
+          <img 
+            src="https://files.merca20.com/uploads/2020/01/sony-playstation-5.jpg" 
+            alt="Setup PlayStation" 
+            class="img-fluid rounded shadow" 
+            style="max-height: 200px; object-fit: cover; flex-shrink: 0;"
+          />
+          <img 
+            src="https://th.bing.com/th/id/OIP.FaMk6ixGLVbjsPMN5Cz5YwHaEK?rs=1&pid=ImgDetMain" 
+            alt="Setup Nitendo" 
+            class="img-fluid rounded shadow" 
+            style="max-height: 200px; object-fit: cover; flex-shrink: 0;"
+          />
+          <img 
+            src="https://images.hdqwalls.com/download/playstation-5-fd-3840x2160.jpg" 
+            alt="PS 5" 
+            class="img-fluid rounded shadow" 
+            style="max-height: 200px; object-fit: cover; flex-shrink: 0;"
+          />
+          <img 
+            src="https://th.bing.com/th/id/OIP.fsY2nuJvKK00hBz22uAitwHaEK?w=640&h=360&rs=1&pid=ImgDetMain" 
+            alt="Game Playstation" 
+            class="img-fluid rounded shadow" 
+            style="max-height: 200px; object-fit: cover; flex-shrink: 0;"
+          />
+        </div>
+        <p class="mt-2 text-muted small">*Geser untuk melihat lebih banyak gambar</p>
+      </div>
+    </div>
+</section>  
+
+<section class="py-5" style="background: linear-gradient(135deg, white, black); color: #fff;">
+    <div class="container">
+        <div class="text-center mb-4">
+        <h2 class="text-danger fw-bold" style="font-family: 'Poppins', sans-serif;">ROOM</h2>
+        <p class="text-muted fs-5">
+            Kami hadir dengan Ruangan terbaik untuk memenuhi kebutuhan hiburan Anda!
+        </p>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card border-0 shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#modalVVIP">
+            <img
+                src="https://i.imgur.com/NlrHSlj.jpeg"
+                alt="Room VVIP"
+                class="card-img-top"
+                style="height: 200px; object-fit: cover;"
+            />
+            <div class="card-body text-center">
+                <h5 class="card-title text-danger fw-bold">Room VVIP</h5>
+                <p class="card-text">
+                Mulai dari Rp 200.000 / jam, nikmati bermain PS & Nintendo kapan saja dengan harga terjangkau.
+                </p>
+            </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border-0 shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#modalVIP">
+            <img
+                src="https://i.imgur.com/QBbDeF7.jpeg"
+                alt="Room VIP"
+                class="card-img-top"
+                style="height: 200px; object-fit: cover;"
+            />
+            <div class="card-body text-center">
+                <h5 class="card-title text-danger fw-bold">Room VIP</h5>
+                <p class="card-text">
+                Mulai dari Rp 75.000 / jam. Nikmati fasilitasnya!
+                </p>
+            </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border-0 shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#modalReguler">
+            <img
+                src="https://i.imgur.com/iPF21BE.jpeg"
+                alt="Room Regular"
+                class="card-img-top"
+                style="height: 200px; object-fit: cover;"
+            />
+            <div class="card-body text-center">
+                <h5 class="card-title text-danger fw-bold">Room Reguler</h5>
+                <p class="card-text">
+                Paket hemat mulai dari Rp 20.000 / jam, Nikmati Game favorit Anda. Lebih lama, lebih hemat!
+                </p>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="modalVVIP" tabindex="-1" aria-labelledby="modalVVIPLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+        <div class="modal-body text-center">
+        <img src="https://i.imgur.com/NlrHSlj.jpeg" alt="Room VVIP" class="img-fluid rounded mb-4">
+        <h5 class="text-danger fw-bold">Room VVIP</h5>
+        <p>Mulai dari Rp 200.000 / jam, nikmati bermain PS & Nintendo kapan saja dengan harga terjangkau.</p>
+        </div>
+    </div>
+    </div>
+</div>
+    <div class="modal fade" id="modalVIP" tabindex="-1" aria-labelledby="modalVIPLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+        <div class="modal-body text-center">
+            <img src="https://i.imgur.com/QBbDeF7.jpeg" alt="Room VIP" class="img-fluid rounded mb-4">
+            <h5 class="text-danger fw-bold">Room VIP</h5>
+            <p>Mulai dari Rp 75.000 / jam. Nikmati Fasilitasnya!</p>
+        </div>
+        </div>
+</div>
+</div>
+    <div class="modal fade" id="modalReguler" tabindex="-1" aria-labelledby="modalRegulerLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+        <div class="modal-body text-center">
+            <img src="https://i.imgur.com/iPF21BE.jpeg" alt="Room Reguler" class="img-fluid rounded mb-4">
+            <h5 class="text-danger fw-bold">Room Reguler</h5>
+            <p>Paket hemat mulai dari Rp 20.000 / jam, Nikmati Game favorit Anda. Lebih lama, lebih hemat!</p>
+        </div>
+        </div>
+    </div>
+</div>
+
+<footer class="bg-danger text-light py-5">
+<div class="container">
+    <div class="row">
+    <div class="col-md-3">
+        <h5 class="fw-bold text-uppercase">Tentang Kami</h5>
+        <div class="border-bottom border-warning my-2" style="width: 60px;"></div>
+        <p>
+        Pixels Game Rental PS & Nitendo. Kami menawarkan berbagai jenis PS & Nitendo untuk disewakan dengan harga terjangkau.
+        </p>
+    </div>
+
+    <div class="col-md-3">
+        <h5 class="fw-bold text-uppercase">Alamat</h5>
+        <div class="border-bottom border-warning my-2" style="width: 60px;"></div>
+        <p>
+        <strong>Cabang 1:</strong> Jl. Jend Sudirman No.10, Cibadak, Jakarta <br>
+        <strong>Cabang 2:</strong> Jl. Patisari No.28, Neglasari, Bandung <br>
+        <strong>Cabang 3:</strong> Jl. Kolonel Atmo No.7, Palembang
+        </p>
+    </div>
+    
+    <div class="col-md-3">
+        <h5 class="fw-bold text-uppercase">Hubungi Kami</h5>
+        <div class="border-bottom border-warning my-2" style="width: 60px;"></div>
+        <p>
+        📞 085211223344 <br>
+        📱 WhatsApp: 085211223344
+        </p>
+        <div class="d-flex gap-3 mt-3">
+        <a href="#" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="text-light fs-5"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="text-light fs-5"><i class="bi bi-youtube"></i></a>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <h5 class="fw-bold text-uppercase">Info Terbaru</h5>
+        <div class="border-bottom border-warning my-2" style="width: 60px;"></div>
+        <ul class="list-unstyled">
+        <li class="mb-3">
+            <span class="text-warning small">22 September 2024</span><br>
+            <a href="#" class="text-light text-decoration-none">Rental PlayStation Murah Jakarta</a>
+        </li>
+        <li>
+            <span class="text-warning small">13 Januari 2023</span><br>
+            <a href="#" class="text-light text-decoration-none">Sewa PlayStation Harian Bandung</a>
+        </li>
+        </ul>
+    </div>
+    </div>
+    <div class="text-center mt-4 small">
+    © 2023 Pixels Game Rental. All Rights Reserved. Published by www.pixels.co.id
+    </div>
+</div>
+</footer>

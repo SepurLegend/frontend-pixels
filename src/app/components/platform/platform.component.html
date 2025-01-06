@@ -1,0 +1,275 @@
+<section class="hero text-light" 
+  style="
+    background: url('https://www.gamekings.tv/wp-content/uploads/3418239-feature_psxboxcrossplay_20180717_c.jpg') no-repeat center center; 
+    background-size: cover; 
+    height:400px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;"
+  >
+  <div 
+    class="text-center bg-dark bg-opacity-50 p-3 rounded-3 shadow-lg" 
+    style="backdrop-filter: blur(5px);">
+    <h1 class="fw-bold glowing-text mb-2" style="font-size: 2.5rem;">Selamat Datang di Daftar Platform</h1>
+    <p class="fs-5 glowing-text-small">Kelola Platform Anda dengan Mudah!</p>
+  </div>
+</section>
+
+<div class="d-flex justify-content-center mt-4" *ngIf="isLoading">
+  <div class="spinner-border text-danger" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<div class="mt-4">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="text-danger fw-bold d-flex align-items-center">
+      <i class="bi bi-joystick me-2 fs-2"></i> Daftar Platform
+    </h2>
+    <button
+      *ngIf="isAdmin"
+      type="button"
+      class="btn btn-primary btn-lg px-4 py-2 shadow-sm"
+      data-bs-toggle="modal"
+      data-bs-target="#tambahPlatformModal"
+    >
+      <i class="bi bi-plus-circle me-2"></i> Tambah Platform
+    </button>
+</div>
+
+<div class="mt-3 mb-4">
+  <hr class="text-danger border-2 opacity-50">
+</div>
+
+<!-- Modal Tambah platform -->
+<div
+  class="modal fade"
+  id="tambahPlatformModal"
+  tabindex="-1"
+  aria-labelledby="tambahPlatformModalLabel"
+  aria-hidden="true"
+  >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tambahPlatformLabel">Tambah Platform</h5>
+        <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="platformForm" (ngSubmit)="addPlatform()">
+          <div class="mb-3">
+            <label for="namaConsole" class="form-label">Nama Console</label>
+            <input
+            id="namaConsole"
+            type="text"
+            class="form-control"
+            formControlName="namaConsole"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="versiConsole" class="form-label"> Versi Console</label>
+            <input
+            id="versiConsole"
+            type="text"
+            class="form-control"
+              formControlName="versiConsole"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="wilayahConsole" class="form-label">Wilayah Console</label>
+              <input
+              id="wilayahConsole"
+              type="text"
+              class="form-control"
+              formControlName="wilayahConsole"
+              />
+            </div>
+            <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="isSubmitting"
+            >
+            {{ isSubmitting ? "Menyimpan..." : "Tambah Platform" }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <img
+  src="item.imageUrl"
+  class="card-img-top"
+  alt="{{ item.imageUrl }}"
+/> -->
+
+<!-- Data platform dalam bentuk Card -->
+<div class="row row-cols-1 row-cols-md-4 g-4 mt-4 mb-5" *ngIf="!isLoading">
+  <div class="col" *ngFor="let item of platform">
+    <div class="card shadow-sm h-100">
+      <img
+        src="https://cdn.mos.cms.futurecdn.net/JpW3zxwNtfR439QHsvVFt5.jpg"
+        class="card-img-top"
+        alt="{{ item.namaConsole }}"
+      />
+      
+      <div class="card-body">
+        <h5 class="card-title text-center fw-bold text-danger">
+            {{ item.namaConsole }}
+        </h5>
+        <hr class="my-2" />
+        <p class="card-text">
+          <strong>Versi Console:</strong> {{ item.versiConsole }}<br />
+          <strong>Wilayah Console:</strong> {{ item.wilayahConsole }}<br />
+          
+        </p>
+        <div class="card-footer bg-white d-flex justify-content-between">
+            <button
+              *ngIf="isAdmin"
+              type="button"
+              class="btn btn-warning btn-sm w-45"
+              (click)="getPlatformById(item._id)"
+            >
+              Edit
+            </button>
+            <button
+              *ngIf="isAdmin"
+              type="button"
+              class="btn btn-danger btn-sm w-45"
+              (click)="deletePlatform(item._id)"
+            >
+              Hapus
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-danger text-light py-5">
+  <div class="container">
+      <div class="row">
+      <div class="col-md-3">
+          <h5 class="fw-bold text-uppercase">Tentang Kami</h5>
+          <div class="border-bottom border-warning my-2" style="width: 60px;"></div>
+          <p>
+          Pixels Game Rental PS & Nitendo. Kami menawarkan berbagai jenis PS & Nitendo untuk disewakan dengan harga terjangkau.
+          </p>
+      </div>
+  
+      <div class="col-md-3">
+          <h5 class="fw-bold text-uppercase">Alamat</h5>
+          <div class="border-bottom border-warning my-2" style="width: 60px;"></div>
+          <p>
+          <strong>Cabang 1:</strong> Jl. Jend Sudirman No.10, Cibadak, Jakarta <br>
+          <strong>Cabang 2:</strong> Jl. Patisari No.28, Neglasari, Bandung <br>
+          <strong>Cabang 3:</strong> Jl. Kolonel Atmo No.7, Palembang
+          </p>
+      </div>
+      
+      <div class="col-md-3">
+          <h5 class="fw-bold text-uppercase">Hubungi Kami</h5>
+          <div class="border-bottom border-warning my-2" style="width: 60px;"></div>
+          <p>
+          📞 085211223344 <br>
+          📱 WhatsApp: 085211223344
+          </p>
+          <div class="d-flex gap-3 mt-3">
+          <a href="#" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-youtube"></i></a>
+          </div>
+      </div>
+      
+      <div class="col-md-3">
+          <h5 class="fw-bold text-uppercase">Info Terbaru</h5>
+          <div class="border-bottom border-warning my-2" style="width: 60px;"></div>
+          <ul class="list-unstyled">
+          <li class="mb-3">
+              <span class="text-warning small">22 September 2024</span><br>
+              <a href="#" class="text-light text-decoration-none">Rental PlayStation Murah Jakarta</a>
+          </li>
+          <li>
+              <span class="text-warning small">13 Januari 2023</span><br>
+              <a href="#" class="text-light text-decoration-none">Sewa PlayStation Harian Bandung</a>
+          </li>
+          </ul>
+      </div>
+      </div>
+      <div class="text-center mt-4 small">
+      © 2023 Pixels Game Rental. All Rights Reserved. Published by www.pixels.co.id
+      </div>
+  </div>
+</footer>
+  
+
+
+<!-- Modal Edit Game -->
+<div
+  class="modal fade"
+  id="editPlatformModal"
+  tabindex="-1"
+  aria-labelledby="editPlatformModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editPlatformModalLabel">
+          Edit Platform
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="platformForm" (ngSubmit)="updatePlatform()">
+          <!-- Input Form -->
+          <div class="mb-3">
+            <label for="editnamaConsole" class="form-label">Nama Console</label>
+            <input
+              id="editnamaConsole"
+              type="text"
+              class="form-control"
+              formControlName="namaConsole"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="editversiConsole" class="form-label">Versi Console</label>
+            <input
+              id="editversiConsole"
+              type="text"
+              class="form-control"
+              formControlName="versiConsole"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="editwilayahConsole" class="form-label">wilayah Console</label>
+            <input
+              id="editwilayahConsole"
+              type="text"
+              class="form-control"
+              formControlName="wilayahConsole"
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="isSubmitting"
+          >
+            {{ isSubmitting ? "Menyimpan..." : "Simpan Perubahan" }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,312 @@
+<!-- Gambar Header -->
+<div class="position-relative">
+  <img 
+    src="https://static.vecteezy.com/system/resources/previews/002/185/855/non_2x/game-on-neon-signs-style-text-free-vector.jpg" 
+    alt="Rental Management Header" 
+    class="img-fluid" 
+    style="height: 400px; object-fit: cover; width: 100%;">
+  <div class="position-absolute top-50 start-50 translate-middle text-center">
+    <!-- <h1 
+      class="fw-bold text-light glowing-text" 
+      style="font-size: 3rem; text-shadow: 0 0 10px #ffffff, 0 0 20px #ff0000, 0 0 30px #ff0000;">
+      Rental Manager
+    </h1> -->
+  </div>
+</div>
+
+<div class="d-flex justify-content-center mt-4" *ngIf="isLoading">
+  <div class="spinner-border text-danger" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<div class="mt-4">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="text-danger fw-bold d-flex align-items-center">
+      <i class="bi bi-book-half me-2 fs-2"></i> Daftar Rental
+    </h2>
+    <button
+      *ngIf="isAdmin"
+      type="button"
+      class="btn btn-primary btn-lg px-4 py-2 shadow-sm"
+      data-bs-toggle="modal"
+      data-bs-target="#tambahRentalModal"
+    >
+      <i class="bi bi-plus-circle me-2"></i> Tambah Rental
+    </button>
+</div>
+
+<div class="mt-3 mb-4">
+  <hr class="text-danger border-2 opacity-50">
+</div>
+  <!-- Tombol Tambah Rental -->
+  <!-- <div class="text-center my-4">
+    <button 
+      type="button" 
+      class="btn btn-primary btn-lg" 
+      data-bs-toggle="modal" 
+      data-bs-target="#tambahRentalModal">
+      <i class="bi bi-plus-circle me-2"></i>Tambah Rental
+    </button>
+  </div> -->
+  <!-- Daftar Rental -->
+  <div class="list-group">
+    <div 
+      class="list-group-item list-group-item-action flex-column align-items-start"
+      *ngFor="let item of rental | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }; let i = index">
+      <div class="d-flex justify-content-between align-items-center">
+        <h5 class="mb-1">{{ i + 1 }}. {{ item.namaCustomer }}</h5>
+        <small class="text-muted">Durasi: {{ item.durationTime }}</small>
+        <small class="text-muted">Start Time: {{ item.startTime }}</small>
+        <small class="text-muted">End Time: {{ item.endTime }}</small>
+
+      </div>
+      <p class="mb-1">
+        <strong>Tipe Room:</strong> {{ item.room_id?.tipe }} <br>
+        <strong>Console:</strong> {{ item.platform_id?.namaConsole }} <br>
+        <strong>Game:</strong> {{ item.game_id?.namaGame }}
+      </p>
+      <div class="d-flex gap-2">
+        <button
+          *ngIf="isAdmin"  
+          type="button" 
+          class="btn btn-warning btn-sm" 
+          (click)="getRentalById(item._id)">
+          Edit
+        </button>
+        <button
+          *ngIf="isAdmin"
+          type="button" 
+          class="btn btn-danger btn-sm" 
+          (click)="deleteRental(item._id)">
+          Hapus
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paginasi -->
+  <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+</div>
+
+<footer class="bg-danger text-light py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h5 class="fw-bold text-uppercase">Tentang Kami</h5>
+        <div class="border-bottom border-warning my-2" style="width: 60px;"></div>
+        <p>
+          Pixels Game Rental PS & Nitendo. Kami menawarkan berbagai jenis PS & Nitendo untuk disewakan dengan harga terjangkau.
+        </p>
+      </div>
+      <div class="col-md-3">
+        <h5 class="fw-bold text-uppercase">Alamat</h5>
+        <div class="border-bottom border-warning my-2" style="width: 60px;"></div>
+        <p>
+          <strong>Cabang 1:</strong> Jl. Jend Sudirman No.10, Cibadak, Jakarta <br>
+          <strong>Cabang 2:</strong> Jl. Patisari No.28, Neglasari, Bandung <br>
+          <strong>Cabang 3:</strong> Jl. Kolonel Atmo No.7, Palembang
+        </p>
+      </div>
+      <div class="col-md-3">
+        <h5 class="fw-bold text-uppercase">Hubungi Kami</h5>
+        <div class="border-bottom border-warning my-2" style="width: 60px;"></div>
+        <p>
+          📞 085211223344 <br>
+          📱 WhatsApp: 085211223344
+        </p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="#" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-light fs-5"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h5 class="fw-bold text-uppercase">Info Terbaru</h5>
+        <div class="border-bottom border-warning my-2" style="width: 60px;"></div>
+        <ul class="list-unstyled">
+          <li class="mb-3">
+            <span class="text-warning small">22 September 2024</span><br>
+            <a href="#" class="text-light text-decoration-none">Rental PlayStation Murah Jakarta</a>
+          </li>
+          <li>
+            <span class="text-warning small">13 Januari 2023</span><br>
+            <a href="#" class="text-light text-decoration-none">Sewa PlayStation Harian Bandung</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center mt-4 small">
+      © 2023 Pixels Game Rental. All Rights Reserved. Published by www.pixels.co.id
+    </div>
+  </div>
+</footer>
+
+
+  
+
+<!-- Modal Tambah Rental -->
+<div 
+  class="modal fade" 
+  id="tambahRentalModal" 
+  tabindex="-1" 
+  aria-labelledby="tambahRentalModalLabel" 
+  aria-hidden="true"
+  >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tambahRentalModalLabel">Tambah Rental</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="rentalForm" (ngSubmit)="addRental()">
+          <div class="mb-3">
+            <label for="namaCustomer" class="form-label">Nama Customer</label>
+            <input 
+              id="namaCustomer" 
+              type="text" 
+              class="form-control" 
+              formControlName="namaCustomer" 
+              required>
+          </div>
+          <div class="mb-3">
+            <label for="room" class="form-label">Tipe Ruangan</label>
+            <select
+              id="room"
+              class="form-select"
+              formControlName="room_id"
+            >
+            <option *ngFor="let item of room" [value]="item._id">
+              {{ item.tipe }}
+            </option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="platform" class="form-label">Platform</label>
+            <select
+              id="platform"
+              class="form-select"
+              formControlName="platform_id"
+            >
+            <option *ngFor="let item of platform" [value]="item._id">
+              {{ item.namaConsole }}
+            </option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="game" class="form-label">Game</label>
+            <select
+              id="game"
+              class="form-select"
+              formControlName="game_id"
+            >
+            <option *ngFor="let item of game" [value]="item._id">
+              {{ item.namaGame }}
+            </option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="durationTime" class="form-label">Durasi</label>
+            <input 
+              id="durationTime" 
+              type="text" 
+              class="form-control" 
+              formControlName="durationTime" 
+              required>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="isSubmitting"
+            >
+            {{ isSubmitting ? "Menyimpan..." : "Tambah Rental" }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Edit Rental -->
+<div 
+  class="modal fade" 
+  id="editRentalModal" 
+  tabindex="-1" 
+  aria-labelledby="editRentalModalLabel" 
+  aria-hidden="true"
+  >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editRentalModalLabel">Edit Rental</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="rentalForm" (ngSubmit)="updateRental()">
+          <div class="mb-3">
+            <label for="editnamaCustomer" class="form-label">Nama Customer</label>
+            <input 
+              id="editnamaCustomer" 
+              type="text" 
+              class="form-control" 
+              formControlName="namaCustomer" 
+              required>
+          </div>
+          <div class="mb-3">
+            <label for="editroom" class="form-label">Tipe Ruangan</label>
+            <select
+              id="editroom"
+              class="form-select"
+              formControlName="room_id"
+            >
+            <option *ngFor="let item of room" [value]="item._id">
+              {{ item.tipe }}
+            </option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="editplatform" class="form-label">Platform</label>
+            <select
+              id="editplatform"
+              class="form-select"
+              formControlName="platform_id"
+            >
+            <option *ngFor="let item of platform" [value]="item._id">
+              {{ item.namaConsole }}
+            </option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="editgame" class="form-label">Game</label>
+            <select
+              id="editgame"
+              class="form-select"
+              formControlName="game_id"
+            >
+            <option *ngFor="let item of game" [value]="item._id">
+              {{ item.namaGame }}
+            </option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="editdurationTime" class="form-label">Durasi</label>
+            <input 
+              id="editdurationTime" 
+              type="text" 
+              class="form-control" 
+              formControlName="durationTime" 
+              required>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="isSubmitting"
+            >
+            {{ isSubmitting ? "Menyimpan..." : "Simpan Perubahan" }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
