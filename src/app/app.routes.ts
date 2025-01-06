@@ -15,6 +15,6 @@ export const routes: Routes = [
     { path: 'rental', component: RentalComponent, canActivate: [AuthGuard] },
     { path: 'room', component: RoomComponent, canActivate: [AuthGuard] },
     { path: 'auth', component: AuthComponent },
-    { path: 'register', component: RegisterComponent},
+    { path: 'auth/register', component: RegisterComponent},
     { path: '**', redirectTo: 'auth'},
 ];
